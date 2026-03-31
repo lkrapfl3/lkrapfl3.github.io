@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Hi I am Lucas! Welcome to my blog about intersting sports things, mostly biased to my favorite teams."
+  },
+  {
+    "objectID": "posts/ncaa-baketball-huskers-march-madnes-run/index.html",
+    "href": "posts/ncaa-baketball-huskers-march-madnes-run/index.html",
+    "title": "Nebraska had a program first in March Madness",
+    "section": "",
+    "text": "Code\nlibrary(tidyverse)\n\n\nNebraska’s March Madness run was one for the ages. The Husker’s secured their first March Madness win in program history over Troy. They came into the tournament being the only power 4 team to have never won a tournament game\n\n\nCode\nggplot(mtcars, aes(x = disp, y = mpg)) +\n  geom_point()"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "sportsblog",
+    "section": "",
+    "text": "Nebraska had a program first in March Madness\n\n\n\nncaa\n\nbasketball\n\nhuskers\n\n\n\n\n\n\n\n\n\nApr 10, 2026\n\n\nLucas Krapfl\n\n\n\n\n\nNo matching items"
+  }
+]
