@@ -11,7 +11,7 @@
     "href": "posts/ncaa-baketball-huskers-march-madnes-run/index.html",
     "title": "Nebraska had a program first in March Madness",
     "section": "",
-    "text": "Code\nlibrary(tidyverse)\n\n\nNebraska’s March Madness run was one for the ages. The Husker’s secured their first March Madness win in program history over Troy. They came into the tournament being the only power 4 team to have never won a tournament game\n\n\nCode\nggplot(mtcars, aes(x = disp, y = mpg)) +\n  geom_point()"
+    "text": "Code\nlibrary(tidyverse)\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.6\n✔ forcats   1.0.1     ✔ stringr   1.6.0\n✔ ggplot2   4.0.1     ✔ tibble    3.3.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.2\n✔ purrr     1.2.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nNebraska’s March Madness run was one for the ages. The Husker’s secured their first March Madness win in program history over Troy. They came into the tournament being the only power 4 team to have never won a tournament game\n\n\nCode\nggplot(mtcars, aes(x = disp, y = mpg)) +\n  geom_point()"
   },
   {
     "objectID": "posts/ChelseaFC-Fall_From-Grace/index.html",
