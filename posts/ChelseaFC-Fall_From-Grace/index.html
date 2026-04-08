@@ -25,6 +25,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -325,12 +360,124 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbump)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggalt)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbeeswarm)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>CLSeason <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"MajorProject/Pl2020_21.csv"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>Season2022 <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"MajorProject/Pl2021_22.csv"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Season2023 <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"MajorProject/Pl2022_23.csv"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>Season2024 <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"MajorProject/Pl2023_24.csv"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Season2025 <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"MajorProject/Pl2024_25.csv"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>transfers <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"MajorProject/Pl_transfer_spending_2022_26.csv"</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Ranks <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"MajorProject/PL_ranks.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 <p>Chelsea FC had finally climbed the mountain again in 2021. WIth a 1-0 win over Manchester City on a faithful night in Wembly, the Pride of London retook their throne as Champions of Europe. With a solid core, a great coach in Tomas Tuchel, and the full support of the ownership, they seemed to be untouchable. The thing that brought them down… the Rusian Invasion of Ukraine.</p>
 <p>You might be wondering how that could possibly bring an English football team from the top of the mountain to a staggering 12th place the next season. After the invasion started in 2022, the English FA forced Russian billionare Ruben Abromivich, the owner of Chelsea to sell to Clearlake Captial and Todd Bohley, a group that would soon be known as Blueco.</p>
 <p>Todd and Clearlake had an idea. This idea was a project to build a dynasty for years to come. They purchased about every player under the sun, however, they were all under age 25. Managers found this contrevercial due to lack of experience, however it was the decision of Blueco at the end of the day.</p>
 <p>As we enter year 4 of the Chelsea project, are on their 6th manager, billions spent in transfer fees, and no leauge titles or champions leauges to show for it.</p>
 <p>Lets dive into some of the numbers from their championship winning year versus recent years to identify where the glaring holes are to see if money can patch them starting with goal differential:</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>CLDumbell <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>CLSeason, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">y=</span>Squad, <span class="at">yend=</span>Squad,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">x=</span>GF, <span class="at">xend=</span>GA),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">color=</span><span class="st">"grey"</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">1.5</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  )  <span class="sc">+</span> </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>CLSeason,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">y=</span>Squad,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">x=</span>GF,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">color=</span><span class="st">"GF"</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="dv">2</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>CLSeason,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">y=</span>Squad,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">x=</span>GA,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">color=</span><span class="st">"GA"</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="dv">2</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name=</span><span class="st">"Goals"</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>)) <span class="sc">+</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Goals For and Against in Chelsea's </span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="st">    Champions Leauge Winning Season"</span>,</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"This is the easiest baseline to see what happened to the team. </span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="st">    Did they stop scoring? Did they let in more goals? Lets find out:"</span>,</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">""</span>,</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Goals For/ Goals Against CL Season"</span>,</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption=</span><span class="st">"Source: FBRef| By Lucas Krapfl"</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span> </span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), </span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>), </span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>Dumbell23 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>Season2023, </span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>      <span class="at">y=</span>Squad, <span class="at">yend=</span>Squad,</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>      <span class="at">x=</span>GF, <span class="at">xend=</span>GA),</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">color=</span><span class="st">"grey"</span>,</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="fl">1.5</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  )  <span class="sc">+</span> </span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>Season2023,</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>      <span class="at">y=</span>Squad,</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>      <span class="at">x=</span>GF,</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>      <span class="at">color=</span><span class="st">"GF"</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="dv">2</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>Season2023,</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>      <span class="at">y=</span>Squad,</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>      <span class="at">x=</span>GA,</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>      <span class="at">color=</span><span class="st">"GA"</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">size=</span><span class="dv">2</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">name=</span><span class="st">"Goals"</span>, <span class="at">values=</span><span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>)) <span class="sc">+</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">""</span>,</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">""</span>,</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">""</span>,</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Goals For/ Goals Against 22-23"</span>,</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption=</span><span class="st">"Source: FBRef | By Lucas Krapfl"</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">+</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span> </span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), </span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>),</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>CLDumbell <span class="sc">+</span> Dumbell23</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -341,6 +488,75 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>Right off the bat we can see that the goal differential took a massive hit when key players started to leave, specifically their defensive anchor Antonio Rudiger. This poor performance would also lead to the departure of basically the entire offense in Kai Havertz, Mason Mount, Christian Pulisic, Mateo Kovacic, and more. Lets take another look at just how bad Chelsea’s squad got under Blueco.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Chelsea23 <span class="ot">&lt;-</span> Season2023 <span class="sc">|&gt;</span> <span class="fu">filter</span>(Squad <span class="sc">==</span> <span class="st">"Chelsea"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ChelseaCL<span class="ot">&lt;-</span> CLSeason <span class="sc">|&gt;</span> <span class="fu">filter</span>(Squad <span class="sc">==</span> <span class="st">"Chelsea"</span>) </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Chelsea24<span class="ot">&lt;-</span> Season2024 <span class="sc">|&gt;</span> <span class="fu">filter</span>(Squad <span class="sc">==</span> <span class="st">"Chelsea"</span>) </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>CLBubble<span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>CLSeason, </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>GF, <span class="at">y=</span>GA, <span class="at">size=</span>GD), </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color=</span><span class="st">"grey"</span>, </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span>.<span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>ChelseaCL, </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>GF, <span class="at">y=</span>GA, <span class="at">size=</span>GD), </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">color=</span><span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"How much worse did Chelsea's Goal </span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="st">    Difference Get Under Blueco?"</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"The bubble chart will show us if they moved along either axis or even </span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="st">switched quadrants during Blueco's first year:"</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Goals Against"</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Goals For CL"</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>   <span class="at">caption=</span><span class="st">"Source: FBRef | By Lucas Krapfl"</span> ) <span class="sc">+</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_minimal</span>()<span class="sc">+</span> </span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data=</span>ChelseaCL, <span class="fu">aes</span>(<span class="at">x=</span>GF, <span class="at">y=</span>GA, <span class="at">label=</span>Squad)) <span class="sc">+</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>, </span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">xmin =</span> <span class="dv">50</span>, <span class="at">xmax =</span> <span class="cn">Inf</span>,</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">ymin =</span> <span class="dv">30</span>, <span class="at">ymax =</span> <span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">65</span>, <span class="at">y=</span><span class="dv">41</span>, <span class="at">label=</span><span class="st">"Great Teams"</span>), <span class="at">size=</span><span class="dv">3</span>) </span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>Bubble2023<span class="ot">&lt;-</span><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Goals Against"</span>,</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Goals For 22/23"</span>,</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>   <span class="at">caption=</span><span class="st">"Source: FBRef | By Lucas Krapfl"</span> )<span class="sc">+</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_minimal</span>()<span class="sc">+</span> </span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>Season2023, </span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>GF, <span class="at">y=</span>GA, <span class="at">size=</span>GD), </span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">color=</span><span class="st">"grey"</span>, </span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha=</span>.<span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>Chelsea23, </span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>GF, <span class="at">y=</span>GA, <span class="at">size=</span>GD), </span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">color=</span><span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data=</span>Chelsea23, <span class="fu">aes</span>(<span class="at">x=</span>GF, <span class="at">y=</span>GA, <span class="at">label=</span>Squad)) <span class="sc">+</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>, </span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>        <span class="at">xmin =</span> <span class="dv">60</span>, <span class="at">xmax =</span> <span class="cn">Inf</span>,</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>        <span class="at">ymin =</span> <span class="dv">30</span>, <span class="at">ymax =</span> <span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">82</span>, <span class="at">y=</span><span class="dv">37</span>, <span class="at">label=</span><span class="st">"Great Teams"</span>), <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Goals Against"</span>,</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Goals For 23/24"</span>,</span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>   <span class="at">caption=</span><span class="st">"Source: FBRef | By Lucas Krapfl"</span> )<span class="sc">+</span></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_minimal</span>()<span class="sc">+</span> </span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), </span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>), </span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span>)</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>CLBubble <span class="sc">+</span> Bubble2023</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -351,24 +567,77 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>This is shows that even after they spent a billion pounds on all the flashiest names to score all the cool highlight goals, you cannot win championships without a key defense. This project was proposed under the guise of development of young players, however when you fire the best developmental coach in the land and replace with 5 more yes men, clearly it does not work. Lets see if in the first season after Tuchel was fired if the coaching or the veteran leadership failed the project:</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>CLTable <span class="ot">&lt;-</span> CLSeason <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Squad, Rank, Avg_Age, Pts_per_MP) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>((Rank))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>Table2023 <span class="ot">&lt;-</span> Season2023 <span class="sc">|&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Squad, Rank, Avg_Age, Pts_per_MP) <span class="sc">|&gt;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>((Rank))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>Table2024 <span class="ot">&lt;-</span> Season2024 <span class="sc">|&gt;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Squad, Rank, Avg_Age, Pts_per_MP) <span class="sc">|&gt;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>((Rank))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>CLTable <span class="sc">|&gt;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">Rank =</span> <span class="st">"Final Rank"</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">Avg_Age =</span> <span class="st">"Avg. Player Age"</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">Pts_per_MP=</span> <span class="st">"Points Per Match"</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Did the Decrease in Veterans Contribute to the Downfall of Chelsea?</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="st">(Title Season)"</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"When most of the veteran leaders left the club, with young players joining, how did the rankings change:"</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> <span class="fu">tab_style</span>(</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"title"</span>)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> <span class="fu">tab_style</span>(</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"subtitle"</span>)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">"Source: FbRef | By Lucas Krapfl"</span>)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>     <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(<span class="at">columns =</span> <span class="fu">everything</span>()),</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>     <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>       <span class="fu">cell_borders</span>(<span class="at">sides =</span> <span class="st">"bottom"</span>, <span class="at">weight =</span> <span class="fu">px</span>(<span class="dv">3</span>)),</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>       <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>)</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>     )</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">|&gt;</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_row_striping</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_table_lines</span>(<span class="st">"none"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"blue"</span>),</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"white"</span>)</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> Squad <span class="sc">==</span> <span class="st">"Chelsea"</span>)</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
-<div id="xunonsjymw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xunonsjymw table {
+<div id="khjolgfgey" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#khjolgfgey table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xunonsjymw thead, #xunonsjymw tbody, #xunonsjymw tfoot, #xunonsjymw tr, #xunonsjymw td, #xunonsjymw th {
+#khjolgfgey thead, #khjolgfgey tbody, #khjolgfgey tfoot, #khjolgfgey tr, #khjolgfgey td, #khjolgfgey th {
   border-style: none;
 }
 
-#xunonsjymw p {
+#khjolgfgey p {
   margin: 0;
   padding: 0;
 }
 
-#xunonsjymw .gt_table {
+#khjolgfgey .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -394,12 +663,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#xunonsjymw .gt_caption {
+#khjolgfgey .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xunonsjymw .gt_title {
+#khjolgfgey .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -411,7 +680,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#xunonsjymw .gt_subtitle {
+#khjolgfgey .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -423,7 +692,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#xunonsjymw .gt_heading {
+#khjolgfgey .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -435,13 +704,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#xunonsjymw .gt_bottom_border {
+#khjolgfgey .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xunonsjymw .gt_col_headings {
+#khjolgfgey .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -456,7 +725,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#xunonsjymw .gt_col_heading {
+#khjolgfgey .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -476,7 +745,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#xunonsjymw .gt_column_spanner_outer {
+#khjolgfgey .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -488,15 +757,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#xunonsjymw .gt_column_spanner_outer:first-child {
+#khjolgfgey .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xunonsjymw .gt_column_spanner_outer:last-child {
+#khjolgfgey .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xunonsjymw .gt_column_spanner {
+#khjolgfgey .gt_column_spanner {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -508,11 +777,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#xunonsjymw .gt_spanner_row {
+#khjolgfgey .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xunonsjymw .gt_group_heading {
+#khjolgfgey .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -538,7 +807,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#xunonsjymw .gt_empty_group_heading {
+#khjolgfgey .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -553,15 +822,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#xunonsjymw .gt_from_md > :first-child {
+#khjolgfgey .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xunonsjymw .gt_from_md > :last-child {
+#khjolgfgey .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xunonsjymw .gt_row {
+#khjolgfgey .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -580,7 +849,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#xunonsjymw .gt_stub {
+#khjolgfgey .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -593,7 +862,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xunonsjymw .gt_stub_row_group {
+#khjolgfgey .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -607,15 +876,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#xunonsjymw .gt_row_group_first td {
+#khjolgfgey .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xunonsjymw .gt_row_group_first th {
+#khjolgfgey .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xunonsjymw .gt_summary_row {
+#khjolgfgey .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -625,16 +894,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xunonsjymw .gt_first_summary_row {
+#khjolgfgey .gt_first_summary_row {
   border-top-style: none;
   border-top-color: #D3D3D3;
 }
 
-#xunonsjymw .gt_first_summary_row.thick {
+#khjolgfgey .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xunonsjymw .gt_last_summary_row {
+#khjolgfgey .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -644,7 +913,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#xunonsjymw .gt_grand_summary_row {
+#khjolgfgey .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -654,7 +923,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xunonsjymw .gt_first_grand_summary_row {
+#khjolgfgey .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -664,7 +933,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#xunonsjymw .gt_last_grand_summary_row_top {
+#khjolgfgey .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -674,11 +943,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#xunonsjymw .gt_striped {
+#khjolgfgey .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xunonsjymw .gt_table_body {
+#khjolgfgey .gt_table_body {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -687,7 +956,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#xunonsjymw .gt_footnotes {
+#khjolgfgey .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -701,7 +970,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#xunonsjymw .gt_footnote {
+#khjolgfgey .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -710,7 +979,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xunonsjymw .gt_sourcenotes {
+#khjolgfgey .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -724,7 +993,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#xunonsjymw .gt_sourcenote {
+#khjolgfgey .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -732,72 +1001,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#xunonsjymw .gt_left {
+#khjolgfgey .gt_left {
   text-align: left;
 }
 
-#xunonsjymw .gt_center {
+#khjolgfgey .gt_center {
   text-align: center;
 }
 
-#xunonsjymw .gt_right {
+#khjolgfgey .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xunonsjymw .gt_font_normal {
+#khjolgfgey .gt_font_normal {
   font-weight: normal;
 }
 
-#xunonsjymw .gt_font_bold {
+#khjolgfgey .gt_font_bold {
   font-weight: bold;
 }
 
-#xunonsjymw .gt_font_italic {
+#khjolgfgey .gt_font_italic {
   font-style: italic;
 }
 
-#xunonsjymw .gt_super {
+#khjolgfgey .gt_super {
   font-size: 65%;
 }
 
-#xunonsjymw .gt_footnote_marks {
+#khjolgfgey .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xunonsjymw .gt_asterisk {
+#khjolgfgey .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xunonsjymw .gt_indent_1 {
+#khjolgfgey .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xunonsjymw .gt_indent_2 {
+#khjolgfgey .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xunonsjymw .gt_indent_3 {
+#khjolgfgey .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xunonsjymw .gt_indent_4 {
+#khjolgfgey .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xunonsjymw .gt_indent_5 {
+#khjolgfgey .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xunonsjymw .katex-display {
+#khjolgfgey .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xunonsjymw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#khjolgfgey div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -805,7 +1074,7 @@ ul.task-list li input[type="checkbox"] {
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_heading header">
-<td colspan="4" class="gt_heading gt_title gt_font_normal" style="text-align: left; color: #000000; font-weight: bold;">Did the Decrease in Veterans Contribute to the Downfall of Chelsea?</td>
+<td colspan="4" class="gt_heading gt_title gt_font_normal" style="text-align: left; color: #000000; font-weight: bold;">Did the Decrease in Veterans Contribute to the Downfall of Chelsea? (Title Season)</td>
 </tr>
 <tr class="gt_heading even">
 <td colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="text-align: left; color: #000000;">When most of the veteran leaders left the club, with young players joining, how did the rankings change:</td>
@@ -814,7 +1083,7 @@ ul.task-list li input[type="checkbox"] {
 <th id="Squad" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">Squad</th>
 <th id="Rank" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">Final Rank</th>
 <th id="Avg_Age" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">Avg. Player Age</th>
-<th id="GD" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">Goal Differential</th>
+<th id="Pts_per_MP" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">Points Per Match</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
@@ -822,121 +1091,121 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left" headers="Squad">Manchester City</td>
 <td class="gt_row gt_right" headers="Rank">1</td>
 <td class="gt_row gt_right" headers="Avg_Age">26.1</td>
-<td class="gt_row gt_right" headers="GD">51</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">2.26</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">Manchester Utd</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">2</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">25.6</td>
-<td class="gt_row gt_right gt_striped" headers="GD">29</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.95</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Liverpool</td>
 <td class="gt_row gt_right" headers="Rank">3</td>
 <td class="gt_row gt_right" headers="Avg_Age">26.8</td>
-<td class="gt_row gt_right" headers="GD">26</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.82</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad" style="background-color: #0000FF; color: #FFFFFF">Chelsea</td>
 <td class="gt_row gt_right gt_striped" headers="Rank" style="background-color: #0000FF; color: #FFFFFF">4</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age" style="background-color: #0000FF; color: #FFFFFF">26.0</td>
-<td class="gt_row gt_right gt_striped" headers="GD" style="background-color: #0000FF; color: #FFFFFF">22</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP" style="background-color: #0000FF; color: #FFFFFF">1.76</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Leicester City</td>
 <td class="gt_row gt_right" headers="Rank">5</td>
 <td class="gt_row gt_right" headers="Avg_Age">26.5</td>
-<td class="gt_row gt_right" headers="GD">18</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.74</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">West Ham United</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">6</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">27.8</td>
-<td class="gt_row gt_right gt_striped" headers="GD">15</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.71</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Tottenham Hotspur</td>
 <td class="gt_row gt_right" headers="Rank">7</td>
 <td class="gt_row gt_right" headers="Avg_Age">27.2</td>
-<td class="gt_row gt_right" headers="GD">23</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.63</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">Arsenal</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">8</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">25.9</td>
-<td class="gt_row gt_right gt_striped" headers="GD">16</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.61</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Leeds United</td>
 <td class="gt_row gt_right" headers="Rank">9</td>
 <td class="gt_row gt_right" headers="Avg_Age">26.1</td>
-<td class="gt_row gt_right" headers="GD">8</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.55</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">Everton</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">10</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">26.3</td>
-<td class="gt_row gt_right gt_striped" headers="GD">-1</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.55</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Aston Villa</td>
 <td class="gt_row gt_right" headers="Rank">11</td>
 <td class="gt_row gt_right" headers="Avg_Age">25.2</td>
-<td class="gt_row gt_right" headers="GD">9</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.45</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">Newcastle United</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">12</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">27.1</td>
-<td class="gt_row gt_right gt_striped" headers="GD">-16</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.18</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Wolves</td>
 <td class="gt_row gt_right" headers="Rank">13</td>
 <td class="gt_row gt_right" headers="Avg_Age">26.3</td>
-<td class="gt_row gt_right" headers="GD">-16</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.18</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">Crystal Palace</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">14</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">29.1</td>
-<td class="gt_row gt_right gt_striped" headers="GD">-25</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.16</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Southampton</td>
 <td class="gt_row gt_right" headers="Rank">15</td>
 <td class="gt_row gt_right" headers="Avg_Age">26.6</td>
-<td class="gt_row gt_right" headers="GD">-21</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.13</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">Brighton</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">16</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">25.8</td>
-<td class="gt_row gt_right gt_striped" headers="GD">-6</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.08</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Burnley</td>
 <td class="gt_row gt_right" headers="Rank">17</td>
 <td class="gt_row gt_right" headers="Avg_Age">28.3</td>
-<td class="gt_row gt_right" headers="GD">-22</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.03</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">Fulham</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">18</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">25.2</td>
-<td class="gt_row gt_right gt_striped" headers="GD">-26</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">0.74</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">West Brom</td>
 <td class="gt_row gt_right" headers="Rank">19</td>
 <td class="gt_row gt_right" headers="Avg_Age">26.4</td>
-<td class="gt_row gt_right" headers="GD">-41</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">0.68</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">Sheffield United</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">20</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">26.7</td>
-<td class="gt_row gt_right gt_striped" headers="GD">-43</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">0.61</td>
 </tr>
 </tbody><tfoot>
 <tr class="gt_sourcenotes odd">
@@ -948,24 +1217,65 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Table2023 <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Rank =</span> <span class="st">"Final Rank"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Avg_Age =</span> <span class="st">"Avg. Player Age"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Pts_per_MP=</span> <span class="st">"Points Per Match"</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>   <span class="at">title =</span> <span class="st">"Did the Decrease in Veterans Contribute to the Downfall of Chelsea?</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">   (22/23)"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"When most of the veteran leaders left the club, with young players joining, how did the rankings change:"</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> <span class="fu">tab_style</span>(</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"title"</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> <span class="fu">tab_style</span>(</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"subtitle"</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">"Source: FbRef | By Lucas Krapfl"</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(<span class="at">columns =</span> <span class="fu">everything</span>()),</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>       <span class="fu">cell_borders</span>(<span class="at">sides =</span> <span class="st">"bottom"</span>, <span class="at">weight =</span> <span class="fu">px</span>(<span class="dv">3</span>)),</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>       <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>     )</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">|&gt;</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_row_striping</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_table_lines</span>(<span class="st">"none"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"blue"</span>),</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"white"</span>)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> Squad <span class="sc">==</span> <span class="st">"Chelsea"</span>)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
-<div id="cruaxdihkz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cruaxdihkz table {
+<div id="gvmweedfkm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gvmweedfkm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cruaxdihkz thead, #cruaxdihkz tbody, #cruaxdihkz tfoot, #cruaxdihkz tr, #cruaxdihkz td, #cruaxdihkz th {
+#gvmweedfkm thead, #gvmweedfkm tbody, #gvmweedfkm tfoot, #gvmweedfkm tr, #gvmweedfkm td, #gvmweedfkm th {
   border-style: none;
 }
 
-#cruaxdihkz p {
+#gvmweedfkm p {
   margin: 0;
   padding: 0;
 }
 
-#cruaxdihkz .gt_table {
+#gvmweedfkm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -991,12 +1301,12 @@ ul.task-list li input[type="checkbox"] {
   border-left-color: #D3D3D3;
 }
 
-#cruaxdihkz .gt_caption {
+#gvmweedfkm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cruaxdihkz .gt_title {
+#gvmweedfkm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1008,7 +1318,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-width: 0;
 }
 
-#cruaxdihkz .gt_subtitle {
+#gvmweedfkm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1020,7 +1330,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-width: 0;
 }
 
-#cruaxdihkz .gt_heading {
+#gvmweedfkm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1032,13 +1342,13 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#cruaxdihkz .gt_bottom_border {
+#gvmweedfkm .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cruaxdihkz .gt_col_headings {
+#gvmweedfkm .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1053,7 +1363,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#cruaxdihkz .gt_col_heading {
+#gvmweedfkm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1073,7 +1383,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#cruaxdihkz .gt_column_spanner_outer {
+#gvmweedfkm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1085,15 +1395,15 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 4px;
 }
 
-#cruaxdihkz .gt_column_spanner_outer:first-child {
+#gvmweedfkm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cruaxdihkz .gt_column_spanner_outer:last-child {
+#gvmweedfkm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cruaxdihkz .gt_column_spanner {
+#gvmweedfkm .gt_column_spanner {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1105,11 +1415,11 @@ ul.task-list li input[type="checkbox"] {
   width: 100%;
 }
 
-#cruaxdihkz .gt_spanner_row {
+#gvmweedfkm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cruaxdihkz .gt_group_heading {
+#gvmweedfkm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1135,7 +1445,7 @@ ul.task-list li input[type="checkbox"] {
   text-align: left;
 }
 
-#cruaxdihkz .gt_empty_group_heading {
+#gvmweedfkm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1150,15 +1460,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 
-#cruaxdihkz .gt_from_md > :first-child {
+#gvmweedfkm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cruaxdihkz .gt_from_md > :last-child {
+#gvmweedfkm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cruaxdihkz .gt_row {
+#gvmweedfkm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1177,7 +1487,7 @@ ul.task-list li input[type="checkbox"] {
   overflow-x: hidden;
 }
 
-#cruaxdihkz .gt_stub {
+#gvmweedfkm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1190,7 +1500,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#cruaxdihkz .gt_stub_row_group {
+#gvmweedfkm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1204,15 +1514,15 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: top;
 }
 
-#cruaxdihkz .gt_row_group_first td {
+#gvmweedfkm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cruaxdihkz .gt_row_group_first th {
+#gvmweedfkm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cruaxdihkz .gt_summary_row {
+#gvmweedfkm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1222,16 +1532,16 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#cruaxdihkz .gt_first_summary_row {
+#gvmweedfkm .gt_first_summary_row {
   border-top-style: none;
   border-top-color: #D3D3D3;
 }
 
-#cruaxdihkz .gt_first_summary_row.thick {
+#gvmweedfkm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cruaxdihkz .gt_last_summary_row {
+#gvmweedfkm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1241,7 +1551,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#cruaxdihkz .gt_grand_summary_row {
+#gvmweedfkm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1251,7 +1561,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#cruaxdihkz .gt_first_grand_summary_row {
+#gvmweedfkm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1261,7 +1571,7 @@ ul.task-list li input[type="checkbox"] {
   border-top-color: #D3D3D3;
 }
 
-#cruaxdihkz .gt_last_grand_summary_row_top {
+#gvmweedfkm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1271,11 +1581,11 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#cruaxdihkz .gt_striped {
+#gvmweedfkm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cruaxdihkz .gt_table_body {
+#gvmweedfkm .gt_table_body {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1284,7 +1594,7 @@ ul.task-list li input[type="checkbox"] {
   border-bottom-color: #D3D3D3;
 }
 
-#cruaxdihkz .gt_footnotes {
+#gvmweedfkm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1298,7 +1608,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#cruaxdihkz .gt_footnote {
+#gvmweedfkm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1307,7 +1617,7 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#cruaxdihkz .gt_sourcenotes {
+#gvmweedfkm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1321,7 +1631,7 @@ ul.task-list li input[type="checkbox"] {
   border-right-color: #D3D3D3;
 }
 
-#cruaxdihkz .gt_sourcenote {
+#gvmweedfkm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1329,72 +1639,72 @@ ul.task-list li input[type="checkbox"] {
   padding-right: 5px;
 }
 
-#cruaxdihkz .gt_left {
+#gvmweedfkm .gt_left {
   text-align: left;
 }
 
-#cruaxdihkz .gt_center {
+#gvmweedfkm .gt_center {
   text-align: center;
 }
 
-#cruaxdihkz .gt_right {
+#gvmweedfkm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cruaxdihkz .gt_font_normal {
+#gvmweedfkm .gt_font_normal {
   font-weight: normal;
 }
 
-#cruaxdihkz .gt_font_bold {
+#gvmweedfkm .gt_font_bold {
   font-weight: bold;
 }
 
-#cruaxdihkz .gt_font_italic {
+#gvmweedfkm .gt_font_italic {
   font-style: italic;
 }
 
-#cruaxdihkz .gt_super {
+#gvmweedfkm .gt_super {
   font-size: 65%;
 }
 
-#cruaxdihkz .gt_footnote_marks {
+#gvmweedfkm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cruaxdihkz .gt_asterisk {
+#gvmweedfkm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cruaxdihkz .gt_indent_1 {
+#gvmweedfkm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cruaxdihkz .gt_indent_2 {
+#gvmweedfkm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cruaxdihkz .gt_indent_3 {
+#gvmweedfkm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cruaxdihkz .gt_indent_4 {
+#gvmweedfkm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cruaxdihkz .gt_indent_5 {
+#gvmweedfkm .gt_indent_5 {
   text-indent: 25px;
 }
 
-#cruaxdihkz .katex-display {
+#gvmweedfkm .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#cruaxdihkz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#gvmweedfkm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1402,7 +1712,7 @@ ul.task-list li input[type="checkbox"] {
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_heading header">
-<td colspan="4" class="gt_heading gt_title gt_font_normal" style="text-align: left; color: #000000; font-weight: bold;">Did the Decrease in Veterans Contribute to the Downfall of Chelsea?</td>
+<td colspan="4" class="gt_heading gt_title gt_font_normal" style="text-align: left; color: #000000; font-weight: bold;">Did the Decrease in Veterans Contribute to the Downfall of Chelsea? (22/23)</td>
 </tr>
 <tr class="gt_heading even">
 <td colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="text-align: left; color: #000000;">When most of the veteran leaders left the club, with young players joining, how did the rankings change:</td>
@@ -1411,7 +1721,7 @@ ul.task-list li input[type="checkbox"] {
 <th id="Squad" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">Squad</th>
 <th id="Rank" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">Final Rank</th>
 <th id="Avg_Age" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">Avg. Player Age</th>
-<th id="GD" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">Goal Differential</th>
+<th id="Pts_per_MP" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">Points Per Match</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
@@ -1419,121 +1729,759 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left" headers="Squad">Manchester City</td>
 <td class="gt_row gt_right" headers="Rank">1</td>
 <td class="gt_row gt_right" headers="Avg_Age">27.2</td>
-<td class="gt_row gt_right" headers="GD">61</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">2.34</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">Arsenal</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">2</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">24.7</td>
-<td class="gt_row gt_right gt_striped" headers="GD">45</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">2.21</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Manchester Utd</td>
 <td class="gt_row gt_right" headers="Rank">3</td>
 <td class="gt_row gt_right" headers="Avg_Age">26.9</td>
-<td class="gt_row gt_right" headers="GD">15</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.97</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">Newcastle United</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">4</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">27.3</td>
-<td class="gt_row gt_right gt_striped" headers="GD">35</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.87</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Liverpool</td>
 <td class="gt_row gt_right" headers="Rank">5</td>
 <td class="gt_row gt_right" headers="Avg_Age">27.4</td>
-<td class="gt_row gt_right" headers="GD">28</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.76</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">Brighton</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">6</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">26.3</td>
-<td class="gt_row gt_right gt_striped" headers="GD">19</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.63</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Aston Villa</td>
 <td class="gt_row gt_right" headers="Rank">7</td>
 <td class="gt_row gt_right" headers="Avg_Age">27.0</td>
-<td class="gt_row gt_right" headers="GD">5</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.61</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">Tottenham Hotspur</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">8</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">27.6</td>
-<td class="gt_row gt_right gt_striped" headers="GD">7</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.58</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Brentford</td>
 <td class="gt_row gt_right" headers="Rank">9</td>
 <td class="gt_row gt_right" headers="Avg_Age">26.2</td>
-<td class="gt_row gt_right" headers="GD">12</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.55</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">Fulham</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">10</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">28.2</td>
-<td class="gt_row gt_right gt_striped" headers="GD">2</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.37</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Crystal Palace</td>
 <td class="gt_row gt_right" headers="Rank">11</td>
 <td class="gt_row gt_right" headers="Avg_Age">26.7</td>
-<td class="gt_row gt_right" headers="GD">-9</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.18</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad" style="background-color: #0000FF; color: #FFFFFF">Chelsea</td>
 <td class="gt_row gt_right gt_striped" headers="Rank" style="background-color: #0000FF; color: #FFFFFF">12</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age" style="background-color: #0000FF; color: #FFFFFF">26.3</td>
-<td class="gt_row gt_right gt_striped" headers="GD" style="background-color: #0000FF; color: #FFFFFF">-9</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP" style="background-color: #0000FF; color: #FFFFFF">1.16</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Wolves</td>
 <td class="gt_row gt_right" headers="Rank">13</td>
 <td class="gt_row gt_right" headers="Avg_Age">26.7</td>
-<td class="gt_row gt_right" headers="GD">-27</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.08</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">West Ham United</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">14</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">28.2</td>
-<td class="gt_row gt_right gt_striped" headers="GD">-13</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.05</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Bournemouth</td>
 <td class="gt_row gt_right" headers="Rank">15</td>
 <td class="gt_row gt_right" headers="Avg_Age">26.3</td>
-<td class="gt_row gt_right" headers="GD">-34</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.03</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">Nottingham Forest</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">16</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">26.5</td>
-<td class="gt_row gt_right gt_striped" headers="GD">-30</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.00</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Everton</td>
 <td class="gt_row gt_right" headers="Rank">17</td>
 <td class="gt_row gt_right" headers="Avg_Age">26.6</td>
-<td class="gt_row gt_right" headers="GD">-23</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">0.95</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">Leicester City</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">18</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">26.1</td>
-<td class="gt_row gt_right gt_striped" headers="GD">-17</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">0.89</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Squad">Leeds United</td>
 <td class="gt_row gt_right" headers="Rank">19</td>
 <td class="gt_row gt_right" headers="Avg_Age">25.3</td>
-<td class="gt_row gt_right" headers="GD">-30</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">0.82</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left gt_striped" headers="Squad">Southampton</td>
 <td class="gt_row gt_right gt_striped" headers="Rank">20</td>
 <td class="gt_row gt_right gt_striped" headers="Avg_Age">24.7</td>
-<td class="gt_row gt_right gt_striped" headers="GD">-37</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">0.66</td>
+</tr>
+</tbody><tfoot>
+<tr class="gt_sourcenotes odd">
+<td colspan="4" class="gt_sourcenote">Source: FbRef | By Lucas Krapfl</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Table2024 <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Rank =</span> <span class="st">"Final Rank"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Avg_Age =</span> <span class="st">"Avg. Player Age"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Pts_per_MP=</span> <span class="st">"Points Per Match"</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>   <span class="at">title =</span> <span class="st">"Did the Decrease in Veterans Contribute to the Downfall of Chelsea?</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="st">   (23/24)"</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"When most of the veteran leaders left the club, with young players joining, how did the rankings change:"</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> <span class="fu">tab_style</span>(</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"title"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> <span class="fu">tab_style</span>(</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">align =</span> <span class="st">"left"</span>),</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_title</span>(<span class="st">"subtitle"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">source_note =</span> <span class="fu">md</span>(<span class="st">"Source: FbRef | By Lucas Krapfl"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">locations =</span> <span class="fu">cells_column_labels</span>(<span class="at">columns =</span> <span class="fu">everything</span>()),</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>       <span class="fu">cell_borders</span>(<span class="at">sides =</span> <span class="st">"bottom"</span>, <span class="at">weight =</span> <span class="fu">px</span>(<span class="dv">3</span>)),</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>       <span class="fu">cell_text</span>(<span class="at">weight =</span> <span class="st">"bold"</span>, <span class="at">size=</span><span class="dv">12</span>)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>     )</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">|&gt;</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_row_striping</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">opt_table_lines</span>(<span class="st">"none"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"blue"</span>),</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"white"</span>)</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>(</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">rows =</span> Squad <span class="sc">==</span> <span class="st">"Chelsea"</span>)</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fxqhiddlxn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fxqhiddlxn table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#fxqhiddlxn thead, #fxqhiddlxn tbody, #fxqhiddlxn tfoot, #fxqhiddlxn tr, #fxqhiddlxn td, #fxqhiddlxn th {
+  border-style: none;
+}
+
+#fxqhiddlxn p {
+  margin: 0;
+  padding: 0;
+}
+
+#fxqhiddlxn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#fxqhiddlxn .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#fxqhiddlxn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#fxqhiddlxn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#fxqhiddlxn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fxqhiddlxn .gt_bottom_border {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fxqhiddlxn .gt_col_headings {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fxqhiddlxn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#fxqhiddlxn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#fxqhiddlxn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#fxqhiddlxn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#fxqhiddlxn .gt_column_spanner {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#fxqhiddlxn .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#fxqhiddlxn .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#fxqhiddlxn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fxqhiddlxn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#fxqhiddlxn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#fxqhiddlxn .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#fxqhiddlxn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fxqhiddlxn .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#fxqhiddlxn .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#fxqhiddlxn .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#fxqhiddlxn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fxqhiddlxn .gt_first_summary_row {
+  border-top-style: none;
+  border-top-color: #D3D3D3;
+}
+
+#fxqhiddlxn .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#fxqhiddlxn .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fxqhiddlxn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fxqhiddlxn .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: none;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#fxqhiddlxn .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fxqhiddlxn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#fxqhiddlxn .gt_table_body {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fxqhiddlxn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fxqhiddlxn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fxqhiddlxn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fxqhiddlxn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fxqhiddlxn .gt_left {
+  text-align: left;
+}
+
+#fxqhiddlxn .gt_center {
+  text-align: center;
+}
+
+#fxqhiddlxn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#fxqhiddlxn .gt_font_normal {
+  font-weight: normal;
+}
+
+#fxqhiddlxn .gt_font_bold {
+  font-weight: bold;
+}
+
+#fxqhiddlxn .gt_font_italic {
+  font-style: italic;
+}
+
+#fxqhiddlxn .gt_super {
+  font-size: 65%;
+}
+
+#fxqhiddlxn .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#fxqhiddlxn .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#fxqhiddlxn .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#fxqhiddlxn .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#fxqhiddlxn .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#fxqhiddlxn .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#fxqhiddlxn .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#fxqhiddlxn .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#fxqhiddlxn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<td colspan="4" class="gt_heading gt_title gt_font_normal" style="text-align: left; color: #000000; font-weight: bold;">Did the Decrease in Veterans Contribute to the Downfall of Chelsea? (23/24)</td>
+</tr>
+<tr class="gt_heading even">
+<td colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="text-align: left; color: #000000;">When most of the veteran leaders left the club, with young players joining, how did the rankings change:</td>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Squad" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">Squad</th>
+<th id="Rank" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">Final Rank</th>
+<th id="Avg_Age" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">Avg. Player Age</th>
+<th id="Pts_per_MP" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-size: 12; font-weight: bold" scope="col">Points Per Match</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Squad">Manchester City</td>
+<td class="gt_row gt_right" headers="Rank">1</td>
+<td class="gt_row gt_right" headers="Avg_Age">26.6</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">2.39</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Squad">Arsenal</td>
+<td class="gt_row gt_right gt_striped" headers="Rank">2</td>
+<td class="gt_row gt_right gt_striped" headers="Avg_Age">25.0</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">2.34</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Squad">Liverpool</td>
+<td class="gt_row gt_right" headers="Rank">3</td>
+<td class="gt_row gt_right" headers="Avg_Age">26.3</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">2.16</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Squad">Aston Villa</td>
+<td class="gt_row gt_right gt_striped" headers="Rank">4</td>
+<td class="gt_row gt_right gt_striped" headers="Avg_Age">26.9</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.79</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Squad">Tottenham Hotspur</td>
+<td class="gt_row gt_right" headers="Rank">5</td>
+<td class="gt_row gt_right" headers="Avg_Age">25.2</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.74</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Squad" style="background-color: #0000FF; color: #FFFFFF">Chelsea</td>
+<td class="gt_row gt_right gt_striped" headers="Rank" style="background-color: #0000FF; color: #FFFFFF">6</td>
+<td class="gt_row gt_right gt_striped" headers="Avg_Age" style="background-color: #0000FF; color: #FFFFFF">24.2</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP" style="background-color: #0000FF; color: #FFFFFF">1.66</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Squad">Newcastle United</td>
+<td class="gt_row gt_right" headers="Rank">7</td>
+<td class="gt_row gt_right" headers="Avg_Age">27.2</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.58</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Squad">Manchester Utd</td>
+<td class="gt_row gt_right gt_striped" headers="Rank">8</td>
+<td class="gt_row gt_right gt_striped" headers="Avg_Age">26.1</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.58</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Squad">West Ham United</td>
+<td class="gt_row gt_right" headers="Rank">9</td>
+<td class="gt_row gt_right" headers="Avg_Age">28.3</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.37</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Squad">Crystal Palace</td>
+<td class="gt_row gt_right gt_striped" headers="Rank">10</td>
+<td class="gt_row gt_right gt_striped" headers="Avg_Age">26.8</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.29</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Squad">Brighton</td>
+<td class="gt_row gt_right" headers="Rank">11</td>
+<td class="gt_row gt_right" headers="Avg_Age">25.9</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.26</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Squad">Bournemouth</td>
+<td class="gt_row gt_right gt_striped" headers="Rank">12</td>
+<td class="gt_row gt_right gt_striped" headers="Avg_Age">25.7</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.26</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Squad">Fulham</td>
+<td class="gt_row gt_right" headers="Rank">13</td>
+<td class="gt_row gt_right" headers="Avg_Age">28.4</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.24</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Squad">Wolves</td>
+<td class="gt_row gt_right gt_striped" headers="Rank">14</td>
+<td class="gt_row gt_right gt_striped" headers="Avg_Age">26.6</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.21</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Squad">Everton</td>
+<td class="gt_row gt_right" headers="Rank">15</td>
+<td class="gt_row gt_right" headers="Avg_Age">27.1</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">1.05</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Squad">Brentford</td>
+<td class="gt_row gt_right gt_striped" headers="Rank">16</td>
+<td class="gt_row gt_right gt_striped" headers="Avg_Age">26.6</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">1.03</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Squad">Nottingham Forest</td>
+<td class="gt_row gt_right" headers="Rank">17</td>
+<td class="gt_row gt_right" headers="Avg_Age">25.7</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">0.84</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Squad">Luton Town</td>
+<td class="gt_row gt_right gt_striped" headers="Rank">18</td>
+<td class="gt_row gt_right gt_striped" headers="Avg_Age">26.7</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">0.68</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Squad">Burnley</td>
+<td class="gt_row gt_right" headers="Rank">19</td>
+<td class="gt_row gt_right" headers="Avg_Age">24.5</td>
+<td class="gt_row gt_right" headers="Pts_per_MP">0.63</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Squad">Sheffield United</td>
+<td class="gt_row gt_right gt_striped" headers="Rank">20</td>
+<td class="gt_row gt_right gt_striped" headers="Avg_Age">25.7</td>
+<td class="gt_row gt_right gt_striped" headers="Pts_per_MP">0.42</td>
 </tr>
 </tbody><tfoot>
 <tr class="gt_sourcenotes odd">
@@ -1546,8 +2494,99 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>This highlights the biggest problem with Blueco that fans have been yelling about for years… A YES MAN IS NOT A GOOD MANAGER. When you sack the best manager you have had it will not matter if you have veterans or not, you will lose. Lets take a look at what they did the year after their spending spree:</p>
+<p>While clearly having veterans matters, as highlighted by the points per match, the most important change was not someone on the pitch. It doesn’t matter who your players are if you dont have a good caoch, PREFEREABLY NOT A YES-MAN FOR BLUECO. When you sack the best manager you have had it will not matter if you have veterans or not, you will lose. Lets take a look at what they did the year after their spending spree:</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>CLBeeswarm <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>CLSeason, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>Avg_Age, <span class="at">y=</span>Pts), <span class="at">color=</span><span class="st">"grey"</span>) <span class="sc">+</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>ChelseaCL, </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>Avg_Age, <span class="at">y=</span>Pts), <span class="at">color=</span><span class="st">"Blue"</span>) <span class="sc">+</span> </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>ChelseaCL, </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>Avg_Age, <span class="at">y=</span>Pts, <span class="at">label=</span>Squad)) <span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span> </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>),</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Trust The Process or Seek Experience?"</span>,</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"This will show us how many points each Chelsea Squad scored in leauge play relative to their team setup. The Champions Leauge squad was built around middle-age vets while the project squad is $1 billon youngsters"</span>,</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Points"</span>,</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Average Age CL Season"</span>,</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>   <span class="at">caption=</span><span class="st">"Source: FBRef | By Lucas Krapfl"</span> )<span class="sc">+</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_minimal</span>()<span class="sc">+</span> </span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">fill =</span> <span class="st">"cyan"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>, </span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">xmin =</span> <span class="dv">23</span>, <span class="at">xmax =</span> <span class="cn">Inf</span>,</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">ymin =</span> <span class="dv">80</span>, <span class="at">ymax =</span> <span class="cn">Inf</span>) <span class="sc">+</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">25</span>, <span class="at">y=</span><span class="dv">85</span>, <span class="at">label=</span><span class="st">"Man City Tier"</span>), <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">fill =</span> <span class="st">"green"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>, </span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>        <span class="at">xmin =</span> <span class="dv">23</span>, <span class="at">xmax =</span> <span class="cn">Inf</span>,</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>        <span class="at">ymin =</span> <span class="fl">64.5</span>, <span class="at">ymax =</span> <span class="dv">80</span>) <span class="sc">+</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">24</span>, <span class="at">y=</span><span class="dv">75</span>, <span class="at">label=</span><span class="st">"Title Contenders"</span>), <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">fill =</span> <span class="st">"yellow"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>, </span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>        <span class="at">xmin =</span> <span class="dv">23</span>, <span class="at">xmax =</span> <span class="cn">Inf</span>,</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>        <span class="at">ymin =</span> <span class="dv">60</span>, <span class="at">ymax =</span> <span class="fl">64.5</span>) <span class="sc">+</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">24</span>, <span class="at">y=</span><span class="dv">63</span>, <span class="at">label=</span><span class="st">"UCL Race"</span>), <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>, </span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>        <span class="at">xmin =</span> <span class="dv">23</span>, <span class="at">xmax =</span> <span class="cn">Inf</span>,</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>        <span class="at">ymin =</span> <span class="dv">57</span>, <span class="at">ymax =</span> <span class="dv">60</span>) <span class="sc">+</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">24</span>, <span class="at">y=</span><span class="dv">59</span>, <span class="at">label=</span><span class="st">"Just Missed UCL"</span>), <span class="at">size=</span><span class="dv">3</span>) </span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>Beeswarm24 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>Season2024, </span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>Avg_Age, <span class="at">y=</span>Pts), <span class="at">color=</span><span class="st">"grey"</span>) <span class="sc">+</span> </span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>Chelsea24, </span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>Avg_Age, <span class="at">y=</span>Pts), <span class="at">color=</span><span class="st">"Blue"</span>) <span class="sc">+</span> </span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">data=</span>Chelsea24, </span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>Avg_Age, <span class="at">y=</span>Pts, <span class="at">label=</span>Squad)) <span class="sc">+</span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span> </span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), </span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>),</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Points"</span>,</span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Average Age Year 2 (23/24)"</span>,</span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>   <span class="at">caption=</span><span class="st">"Source: FBRef | By Lucas Krapfl"</span> )<span class="sc">+</span></span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span> </span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), </span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>),</span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a>   <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">fill =</span> <span class="st">"green"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>, </span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>        <span class="at">xmin =</span> <span class="dv">23</span>, <span class="at">xmax =</span> <span class="cn">Inf</span>,</span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>        <span class="at">ymin =</span> <span class="dv">73</span>, <span class="at">ymax =</span> <span class="cn">Inf</span>) <span class="sc">+</span></span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">27</span>, <span class="at">y=</span><span class="dv">85</span>, <span class="at">label=</span><span class="st">"Title Contenders"</span>), <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">fill =</span> <span class="st">"yellow"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>, </span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a>        <span class="at">xmin =</span> <span class="dv">23</span>, <span class="at">xmax =</span> <span class="cn">Inf</span>,</span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>        <span class="at">ymin =</span> <span class="dv">65</span>, <span class="at">ymax =</span> <span class="dv">73</span>) <span class="sc">+</span></span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">27</span>, <span class="at">y=</span><span class="dv">72</span>, <span class="at">label=</span><span class="st">"Champions Leauge Race"</span>), <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a> <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>, </span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>        <span class="at">xmin =</span> <span class="dv">23</span>, <span class="at">xmax =</span> <span class="cn">Inf</span>,</span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>        <span class="at">ymin =</span> <span class="dv">57</span>, <span class="at">ymax =</span> <span class="dv">65</span>) <span class="sc">+</span></span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fl">26.5</span>, <span class="at">y=</span><span class="dv">63</span>, <span class="at">label=</span><span class="st">"Just Missed UCL"</span>), <span class="at">size=</span><span class="dv">3</span>) </span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a>CLBeeswarm <span class="sc">+</span> Beeswarm24</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1557,12 +2596,76 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p>While this is a vast improvement from 12th place the year before, you are talking about Chelsea FC, a team that is used to winning the biggest and best trophies, competing in the Europa Conference Leauge on WEEKDAYS. Oh and that thing I said about managers clashing with the sporting directors… after digging the team out of this hole the sporting directors fired him for asking for defenders at the end of the season!</p>
-<p>Lets take one last step back and see where we are today with the Chelsea experiment:</p>
+<p>However for how much they have spent… this is not good enough. Lets put into perspective just how much they have spent since Blueco took over:</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>TransferSummary <span class="ot">&lt;-</span> transfers <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Squad) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Total_Spent =</span> <span class="fu">sum</span>(Spent_M),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Net_Players =</span> <span class="fu">sum</span>(Players_In) <span class="sc">-</span> <span class="fu">sum</span>(Players_Out),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Total_Players_In =</span> <span class="fu">sum</span>(Players_In)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>ChelseaTransfers <span class="ot">&lt;-</span> TransferSummary <span class="sc">|&gt;</span> <span class="fu">filter</span>(Squad <span class="sc">==</span> <span class="st">"Chelsea FC"</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>ChelseaSpend <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data=</span>TransferSummary, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(Squad, Total_Spent), <span class="at">weight=</span>Total_Spent)) <span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">data=</span>ChelseaTransfers, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(Squad, Total_Spent), <span class="at">weight=</span>Total_Spent), <span class="at">fill=</span><span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Truly How Much More has Chelsea Spent?"</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Since 2022 Chelsea have signed A LOT of players, but so has everyone else. </span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="st">With all this spending you think there would be some big trophies to show for it..."</span>,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Transfer Spending 22-26 (Millions)"</span>,</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Squad"</span>,</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>   <span class="at">caption=</span><span class="st">"Source: FBRef | By Lucas Krapfl"</span> )<span class="sc">+</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span> </span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), </span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>),</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>ChelseaSpend</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>With that much more spent than the rest of the leauge, lets take a peek at how the experiment has panned out over the last few years:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ChelseaRank <span class="ot">&lt;-</span> Ranks <span class="sc">|&gt;</span> <span class="fu">filter</span>(Squad <span class="sc">==</span> <span class="st">"Chelsea"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bump</span>(<span class="at">data=</span>ChelseaRank, <span class="fu">aes</span>(<span class="at">x=</span>Season, <span class="at">y=</span>Rank, <span class="at">color=</span><span class="st">"Chelsea"</span>)) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>ChelseaRank, <span class="fu">aes</span>(<span class="at">x=</span>Season, <span class="at">y=</span>Rank, <span class="at">color=</span><span class="st">"Chelsea"</span>), <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Chelsea"</span> <span class="ot">=</span> <span class="st">"#034694"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> ChelseaRank <span class="sc">|&gt;</span> <span class="fu">filter</span>(Season <span class="sc">==</span> <span class="fu">min</span>(Season)), <span class="fu">aes</span>(<span class="at">x =</span> Season , <span class="at">y=</span>Rank, <span class="at">label =</span> Squad), <span class="at">size =</span> <span class="dv">3</span>, <span class="at">hjust =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> ChelseaRank <span class="sc">|&gt;</span> <span class="fu">filter</span>(Season <span class="sc">==</span> <span class="fu">max</span>(Season)), <span class="fu">aes</span>(<span class="at">x =</span> Season , <span class="at">y=</span>Rank, <span class="at">label =</span> Squad), <span class="at">size =</span> <span class="dv">3</span>, <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_reverse</span>() <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">title=</span><span class="st">"Premiere Leauge Final Placments since </span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="st">  Champions Leauge Win"</span>, </span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle=</span><span class="st">"Clearly the project has started to dig them out of a hole, </span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="st">however money cannot buy trophies and chemistry."</span>, <span class="at">y=</span> <span class="st">"Premiere Leauge Rank"</span>, <span class="at">x =</span> <span class="st">"Season"</span>, <span class="at">caption=</span><span class="st">"Source: FbRef | By Lucas Krapfl"</span>) <span class="sc">+</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">20</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>), </span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>), </span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
